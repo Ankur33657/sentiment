@@ -1,0 +1,259 @@
+.Navbar{
+top: 0%;
+z-index: 3;  
+padding: 5px;
+margin: 5px;
+background-color:#f1f5f6;
+text-decoration-color: rgb(2, 2, 2);
+border:3px inset #BFEAF5;
+position: sticky;
+
+
+}
+
+.Navbar ul li a{
+  color: rgb(31, 79, 199);
+  text-decoration: none;
+  font-size:large;
+  font-weight: 800;
+  text-shadow: 10px;
+}
+.Navbar ul li a:hover{
+color: red;
+}
+div.form
+{
+    display: block;
+    text-align: center;
+}
+.form-body {
+  margin-top: 5%;
+  margin-left: 32.5%;
+  margin-right:32.5%;
+  width: 35%;
+}
+body {
+  /* background-image: url(https://media.sketchfab.com/models/ccdbe54cc30f4666930203d5ff3cb70c/thumbnails/cdfedd6160de410caff1b0629d2203b8/c81d0e7b39f64a9eb258393f388d51e9.jpeg);
+  background-size: cover; */
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+  color: rgb(3, 2, 0);
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+label {
+  color:rgb(3, 2, 0);
+}
+
+.btn-send {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  width: 80%;
+  margin-left: 3px;
+  }
+.help-block.with-errors {
+  color: #ff5050;
+  margin-top: 5px;
+
+}
+
+.card{
+margin-left: 10px;
+margin-right: 10px;
+}
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #e72828;
+}
+.vh-100{
+  background-color: #eee;
+  
+}
+.list{
+color: rgb(251, 140, 4);
+}
+/* body{background-image: 'F6F1E9'}.card{border:none}.product{background-color: #ffffff}.brand{font-size: 13px}.act-price{color:red;font-weight: 700}.dis-price{text-decoration: line-through}.about{font-size: 14px}.color{margin-bottom:10px}label.radio{cursor: pointer}label.radio input{position: absolute;top: 0;left: 0;visibility: hidden;pointer-events: none}label.radio span{padding: 2px 9px;border: 2px solid #ff0000;display: inline-block;color: #ff0000;border-radius: 3px;text-transform: uppercase}label.radio input:checked+span{border-color: #ff0000;background-color: #ff0000;color: #fff}.btn-danger{background-color: #ff0000 !important;border-color: #ff0000 !important}.btn-danger:hover{background-color: #da0606 !important;border-color: #da0606 !important}.btn-danger:focus{box-shadow: none}.cart i{margin-right: 10px}
+url("https://img.freepik.com/free-vector/elegant-abstract-gold-background-with-shiny-elements_23-2148827899.jpg?size=626&ext=jpg") */
+body{background-color: #FFEBEE;}
+/* ECF9FF */
+.profile{background-color:#FFEBEE}
+.card1{width:400px;border: none;border-radius: 14px !important}
+.area1{background-color: #b5b2f1;border-top-left-radius: 14px !important;border-top-right-radius: 14px !important;padding-top: 83px !important}
+.image1{top: -62px;position: relative}
+.image img{box-shadow: 5px 6px 6px 2px #e9ecef}
+.area2{background-color:#fff;border-bottom-left-radius: 14px !important;border-bottom-right-radius: 14px !important}
+.name{font-size:25px;font-weight:650}.information{color:#9FA8DA;font-weight:500;font-size:16px}
+.list-icons1{display: inline-flex;color:#C5CAE9}
+.list-icons1 li{list-style: none;padding: 12px;border-radius: 10px;width: 49px;margin-right: 10px}
+.list-icons1 li i{font-size: 17px;color: #fff}
+@media (max-width:700px){
+  .list-icons{display: block}}
+  .facebook{background: #3b5998}
+  .instagram{background: #3f729b}
+  .youtube{background: #ff0000}
+  .whatsapp{background: #4dc247}
+  .pinterest{background: #cb2027}
+
+  .carousel-img {
+    height: 600px;
+  }
+ 
+  /* Buy now css */
+  body{
+
+    background-color: #f3f0ff;
+}
+.border3{
+  border: 5px outset rgb(29, 28, 28);
+  padding: 7px;
+}
+
+.container1{
+  margin: auto;
+    width: 80%;
+    height: 100vh;
+
+}
+
+
+.card3{
+    border:none;
+}
+
+.form-control {
+    border-bottom: 2px solid #eee !important;
+    border: none;
+    font-weight: 600
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 2px solid blue !important;
+}
+
+
+
+.inputbox {
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    width: 100%
+}
+
+.inputbox span {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    transition: 0.5s
+}
+
+.inputbox i {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+    transition: 0.5s;
+    color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.inputbox input:focus~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.inputbox input:valid~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.card3-blue{
+
+    background-color: #492bc4;
+}
+
+.hightlight{
+
+    background-color: #5737d9;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.yellow{
+
+    color: #fdcc49; 
+}
+
+.decoration{
+
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #492bc4;
+    border-color:#492bc4;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color:#492bc4;
+    border-color: #492bc4;
+}
+
+
+.decoration:hover{
+
+    text-decoration: none;
+    color: #fdcc49; 
+}
+
+
+.Flex-container{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-item-left{
+  
+  border: 3px inset #ced4da;
+  width:250px;
+  height:45%;
+  margin-top: 20px;
+  margin-left:10px;
+  padding: 25px;
+  background-color: #e9ecef;
+}
+.flex-item-left div{
+  padding: 4px;
+}
+#flex-left2{
+  height:20%
+}
