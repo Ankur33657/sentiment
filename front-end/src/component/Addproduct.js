@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css'
 import Footer from './Footer';
+import ProductList from './ProductList';
 const Addproduct=()=>{
     const [name,setName]=React.useState("");
     const [price,setPrice]=React.useState("");
@@ -8,7 +9,6 @@ const Addproduct=()=>{
     const [company,setCompany]=React.useState("");
     const [imagelink,setImageLink]=React.useState("");
     const [discription,setDiscription]=React.useState("");
-    const [text,setText]=React.useState("");
     const userId=JSON.parse(localStorage.getItem('user'))._id;
     const formData = {
         name: name,
@@ -32,7 +32,13 @@ const Addproduct=()=>{
 
         result=await result.json();
         console.log(result);
-    
+        setName("")
+        setPrice("")
+        setCategory("")
+        setCompany("")
+        setImageLink("")
+        setDiscription("")
+        
     }
     return(
         < >

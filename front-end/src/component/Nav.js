@@ -11,11 +11,11 @@ const Nav = () => {
     navigate('/signup');
   }
     return (
-       <div > 
+      <div className='navbar-container' style={{ position: 'sticky', top: 0 ,zIndex:6}}>
        
         {auth?
         <div  className='Navbar' >
-        <ul  className="nav justify-content-center " style={{position:"sticky"}}>
+        <ul  className="nav justify-content-center " >
   <li className="nav-item">
     <div className="nav-link active" aria-current="page"> <Link to="/">Product</Link></div>
   </li>

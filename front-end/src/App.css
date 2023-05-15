@@ -1,25 +1,25 @@
 .Navbar{
 top: 0%;
 z-index: 3;  
-padding: 5px;
-margin: 5px;
-background-color:#f1f5f6;
-text-decoration-color: rgb(2, 2, 2);
-border:3px inset #BFEAF5;
+padding: 3px;
+margin: 2px;
+background-color:"#BFEAF5";
+text-decoration-color: rgb(0, 0, 0);
+border: 1px inset #BFEAF5;
 position: sticky;
-
+/* #f8f9fa */
 
 }
 
 .Navbar ul li a{
-  color: rgb(31, 79, 199);
+  color: #12b886;
   text-decoration: none;
   font-size:large;
   font-weight: 800;
   text-shadow: 10px;
 }
 .Navbar ul li a:hover{
-color: red;
+color: rgb(255, 55, 0);
 }
 div.form
 {
@@ -89,9 +89,10 @@ color: rgb(251, 140, 4);
 }
 /* body{background-image: 'F6F1E9'}.card{border:none}.product{background-color: #ffffff}.brand{font-size: 13px}.act-price{color:red;font-weight: 700}.dis-price{text-decoration: line-through}.about{font-size: 14px}.color{margin-bottom:10px}label.radio{cursor: pointer}label.radio input{position: absolute;top: 0;left: 0;visibility: hidden;pointer-events: none}label.radio span{padding: 2px 9px;border: 2px solid #ff0000;display: inline-block;color: #ff0000;border-radius: 3px;text-transform: uppercase}label.radio input:checked+span{border-color: #ff0000;background-color: #ff0000;color: #fff}.btn-danger{background-color: #ff0000 !important;border-color: #ff0000 !important}.btn-danger:hover{background-color: #da0606 !important;border-color: #da0606 !important}.btn-danger:focus{box-shadow: none}.cart i{margin-right: 10px}
 url("https://img.freepik.com/free-vector/elegant-abstract-gold-background-with-shiny-elements_23-2148827899.jpg?size=626&ext=jpg") */
-body{background-color: #FFEBEE;}
+body{background-color: #96f2d7;}
 /* ECF9FF */
-.profile{background-color:#FFEBEE}
+/* profile */
+/* .profile{background-color:#FFEBEE}
 .card1{width:400px;border: none;border-radius: 14px !important}
 .area1{background-color: #b5b2f1;border-top-left-radius: 14px !important;border-top-right-radius: 14px !important;padding-top: 83px !important}
 .image1{top: -62px;position: relative}
@@ -107,7 +108,7 @@ body{background-color: #FFEBEE;}
   .instagram{background: #3f729b}
   .youtube{background: #ff0000}
   .whatsapp{background: #4dc247}
-  .pinterest{background: #cb2027}
+  .pinterest{background: #cb2027} */
 
   .carousel-img {
     height: 600px;
@@ -116,7 +117,7 @@ body{background-color: #FFEBEE;}
   /* Buy now css */
   body{
 
-    background-color: #f3f0ff;
+    background-color: #fff4e6;
 }
 .border3{
   border: 5px outset rgb(29, 28, 28);
@@ -242,18 +243,52 @@ input::-webkit-inner-spin-button {
 }
 
 .flex-item-left{
-  
-  border: 3px inset #ced4da;
-  width:250px;
-  height:45%;
+  border: 0.5px inset #ced4da;
+  width:300px;
+  height:60vh;
   margin-top: 20px;
-  margin-left:10px;
+  margin-left: 10px;
+  margin-right: 40px;
   padding: 25px;
-  background-color: #e9ecef;
+  background-color:#fff4e6;
+  color:#2b8a3e;
+  border-radius: 20px;
+  font-weight: bold;
 }
 .flex-item-left div{
   padding: 4px;
 }
 #flex-left2{
-  height:20%
+  height:50vh;
 }
+.sidebarelement{
+ font-size: 20px;
+  text-align: center;
+  margin-top: 60px ;
+  padding: 25px;
+
+}
+.sidehover:hover{
+  cursor: pointer;
+  color: #e72828;
+  font-size: 25px;
+  text-shadow: 2px 2px green;
+} 
+.flex-item-left:hover{
+  width:320px;
+  height:70vh;
+  border-color: green;
+  box-shadow: 10px 5px 5px green;
+  transform: translate(0, -1.1rem);
+}
+.cardlist1:hover{
+  border-color: green;
+  box-shadow: 10px 5px 5px green;
+  transform: translate(0, -1.3rem);
+
+ height:auto;
+ width:auto;
+}
+
+
+
