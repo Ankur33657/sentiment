@@ -4,25 +4,31 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../App.css";
 import Footer from "./Footer";
-import Sentiment from 'sentiment'
+import Sentiment from "sentiment";
+import { Chart } from "react-google-charts";
+
 
 const ProductDetails = (props) => {
   const sentiment = new Sentiment();
   const location = useLocation();
   const [comment, setComment] = useState("");
-  const [neutral,setNeutral]=useState(0);
-  const [happy,setHappy]=useState(0);
-  const [sad,setSad]=useState(0);
- 
- const nut=()=>{
-  setNeutral(neutral+1);
- }
- const hap=()=>{
-  setHappy(happy+1);
- }
- const sa=()=>{
-  setSad(sad+1);
- }
+  
+
+  let sadX = 0;
+  let hapX = 0;
+  let nutX = 0;
+  let score=0;
+  let totalscore=0;
+  
+
+   
+   const options = {
+    chart: {
+      title: "Product Review",
+      subtitle: "Till today",
+    },
+  };
+
   const dat = {
     productIDc: location.state.id,
     commenterc: JSON.parse(localStorage.getItem("user")).name,
@@ -67,8 +73,7 @@ const ProductDetails = (props) => {
     setCon(re);
   };
 
-  // console.log(con);
-  // console.log(location.state.comments);
+ //To find out the popular product
 
   return (
     <>
@@ -112,22 +117,32 @@ const ProductDetails = (props) => {
                         <div class="d-flex align-items-center">
                           {" "}
                           <i class="fa fa-long-arrow-left"></i>{" "}
-                          
                         </div>{" "}
                         <i class="fa fa-shopping-cart text-muted"></i>
                       </div>
                       <div class="mt-4 mb-3">
                         {" "}
                         <span class="text-uppercase text-muted brand">
-                          Brand-  {location.state.company}
+                          Brand- {location.state.company}
                         </span>
-                        <h5 class="text-uppercase">Name-  {location.state.name}</h5>
+                        <h5 class="text-uppercase">
+                          Name- {location.state.name}
+                        </h5>
                         <div class="price d-flex flex-row align-items-center">
                           {" "}
                           <span style={{ margin: "4px" }} class="act-price">
-                            price-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
-  <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
-</svg>{location.state.price}
+                            price-{" "}
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              fill="currentColor"
+                              class="bi bi-currency-rupee"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                            </svg>
+                            {location.state.price}
                           </span>
                           {/* <div class="ml-2">
                             {" "}
@@ -138,7 +153,10 @@ const ProductDetails = (props) => {
                           </div> */}
                         </div>
                       </div>
-                      <p class="about"> Discription-  {location.state.discription}</p>
+                      <p class="about">
+                        {" "}
+                        Discription- {location.state.discription}
+                      </p>
                       <div class="sizes mt-5"></div>
                       <div class="cart mt-4 align-items-center">
                         {" "}
@@ -184,35 +202,96 @@ const ProductDetails = (props) => {
                           <p class="fw-bold text-primary mb-1">
                             {item.userName}
                           </p>
+
                           {/* <p class="text-muted small mb-0">
                             Shared publicly - Jan 2020
                           </p> */}
-                          {sentiment.analyze(item.comment)?.score===0?nut:sentiment.analyze(item.product)?.score<0?sa:hap}
-                          <span > {item.comment}
-                          <span style={{marginLeft:'13px'}} class="emoz">{sentiment.analyze(item.comment)?.score ===0?
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="dark" class="bi bi-emoji-expressionless-fill" viewBox="0 0 16 16">
-                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM4.5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm5 0h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm-5 4h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1z"/>
-                        </svg>
-                          : sentiment.analyze(item.comment)?.score<0?<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="red" class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
-  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
-  </svg>:
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" fill="green" class="bi bi-emoji-smile-fill" viewBox="0 0 16 16">
-  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
-</svg>
-}</span>
+
+                          <span class="d-none">
+                            {score=sentiment.analyze(item.comment).score}
+                            {
+                              score>0?totalscore=totalscore+score:totalscore
+                            }
+                            {score !== 0
+                              ? score < 0
+                                ? sadX++
+                                : hapX++
+                              : nutX++}
                           </span>
-                          
-                          {/* <p class="emoz">{sentiment.analyze(item.comment)?.score ===0?'nutral' : sentiment.analyze(item.comment)?.score<0?'sad':'happy'}</p> */}
-                         
+
+                          <span>
+                            {" "}
+                            {item.comment}
+                            <span style={{ marginLeft: "13px" }} class="emoz">
+                              {score === 0 ? (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="22"
+                                  fill="dark"
+                                  class="bi bi-emoji-expressionless-fill"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM4.5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm5 0h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm-5 4h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1z" />
+                                </svg>
+                              ) : score < 0 ? (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="22"
+                                  fill="red"
+                                  class="bi bi-emoji-frown-fill"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z" />
+                                </svg>
+                              ) : (
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="22"
+                                  fill="green"
+                                  class="bi bi-emoji-smile-fill"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z" />
+                                </svg>
+                              )}
+                            </span>
+                          </span>
                         </div>
                         <br />
                         <br />
                         <br />
                       </div>
                     ))}
-                     <div>Neutral-{neutral}</div>
-                     <div>happy{happy}</div>
-                     <div>sad{sad}</div>
+                    <div style={{marginTop:"20px"}}></div>
+                    
+ <div class="chart">
+ <Chart 
+      chartType="PieChart"
+      data={
+        [
+          ["Review", "Person"],
+          ["Happy", hapX],
+          ["sad", sadX],
+          ["Nuetral", nutX],
+        ]
+      }
+     
+      width={"60%"}
+      height={"400px"}
+      
+    />                
+<Chart 
+      chartType="Bar"
+      width="60%"
+      height="400px"
+      data={[["Year", "Happy", "Sad", "Nuetral"], ["Analysis", hapX, sadX, nutX]]}
+      options={options}
+     
+    />
+    </div> 
                     <div class="small d-flex justify-content-start">
                       <a href="#!" class="d-flex align-items-center me-3">
                         <i class="far fa-thumbs-up me-2"></i>
@@ -279,7 +358,7 @@ const ProductDetails = (props) => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

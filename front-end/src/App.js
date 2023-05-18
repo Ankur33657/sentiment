@@ -9,7 +9,8 @@ import ProductList from './component/ProductList';
 import ProductDetails from './component/ProductDetails';
 import Profile from './component/Profile';
 import Buy from './component/Buy';
-import Sidebar from './component/Sidebar';
+import Popu from './component/Popu';
+
 function App() {
   return (
     <>
@@ -20,7 +21,7 @@ function App() {
     <Route element={<PrivateComponent/>}>
      <Route path="/" element={<ProductList/>}/>
      <Route path="/add" element={<Addproduct/>}/>
-     <Route path="/update" element={<Sidebar/>}/>
+     <Route path="/update" element={<Popu/>}/>
      <Route path="/logout" element={<h1>Logout page</h1>}/>
      <Route path="/profile" element={<Profile/>}/>
      </Route>

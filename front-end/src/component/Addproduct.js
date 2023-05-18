@@ -18,6 +18,7 @@ const Addproduct=()=>{
         company: company,
         imagelink:imagelink,
         discription: discription,
+        popular:false,
       };
       
     const addproduct=async()=>{
@@ -45,7 +46,7 @@ const Addproduct=()=>{
         <div class="container" >
         <div class=" text-center mt-5 ">
 
-            <h1 style={{fontFamily:"Times",color:'gold'}}>Add-Product Form</h1>
+            <h1 style={{fontFamily:"Times",color:'#F9FBE7'}}>Add-Product Form</h1>
                 
             
         </div>

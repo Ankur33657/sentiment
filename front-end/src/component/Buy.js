@@ -4,7 +4,7 @@ import Footer from './Footer';
 const Buy=()=>{
    return(
     <>
-     <div class="container1 mt-5 px-5 border3">
+     <div style={{background:"#F6F1F1"}} class="container1 mt-5 px-5 border3">
 
 <div class="mb-4">
 

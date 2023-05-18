@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
   company: String,
   imagelink: String,
   discription: String,
+  popular:Boolean,
   comments: [{ userName: String, comment: String }],
 });
 

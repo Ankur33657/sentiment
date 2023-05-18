@@ -73,12 +73,7 @@ app.post("/getcomm", async (req, res) => {
     }
   });
 
-  // let comment = await Comment.find();
-  // if (comment.length > 0) {
-  //   res.send(comment);
-  // } else {
-  //   res.send({ result: "NO comment found" });
-  // }
-});
+
+  });
 
 app.listen(5500);
