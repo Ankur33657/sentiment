@@ -22,13 +22,16 @@ const Addproduct = () => {
   };
 
   const addproduct = async () => {
-    let result = await fetch("http://localhost:5500/addproduct", {
-      method: "Post",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      "https://sentiment-backend.vercel.app/addproduct",
+      {
+        method: "Post",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     result = await result.json();
     console.log(result);

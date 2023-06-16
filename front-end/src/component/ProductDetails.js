@@ -35,18 +35,21 @@ const ProductDetails = (props) => {
       ratingScore = 0;
     }
 
-    let result = await fetch("http://localhost:5500/postcomment", {
-      method: "Post",
-      body: JSON.stringify({
-        productIDc: location.state.id,
-        commenterc: JSON.parse(localStorage.getItem("user")).name,
-        commentc: comment,
-        score: ratingScore,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      "https://sentiment-backend.vercel.app/postcomment",
+      {
+        method: "Post",
+        body: JSON.stringify({
+          productIDc: location.state.id,
+          commenterc: JSON.parse(localStorage.getItem("user")).name,
+          commentc: comment,
+          score: ratingScore,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     result = await result.json();
     setComment("");
@@ -66,7 +69,7 @@ const ProductDetails = (props) => {
 
   const getcomments = async () => {
     const preCommInfo = { productIDc: location.state.id };
-    let re = await fetch("http://localhost:5500/getcomm", {
+    let re = await fetch("https://sentiment-backend.vercel.app/getcomm", {
       method: "Post",
       body: JSON.stringify(preCommInfo),
       headers: {

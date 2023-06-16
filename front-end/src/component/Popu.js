@@ -13,7 +13,7 @@ const Popu = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5500/products");
+    let result = await fetch("https://sentiment-backend.vercel.app/products");
     result = await result.json();
     console.log(result);
     setProducts(result);

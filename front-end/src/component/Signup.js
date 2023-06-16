@@ -15,7 +15,7 @@ const Signup = () => {
   });
   const collectdata = async () => {
     console.log(name, email, password);
-    let result = await fetch("http://localhost:5500/register", {
+    let result = await fetch("https://sentiment-backend.vercel.app/register", {
       method: "Post",
       body: JSON.stringify({ name, email, password }),
       headers: {

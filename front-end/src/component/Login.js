@@ -14,7 +14,7 @@ const Login = () => {
     }
   });
   const handleLogin = async () => {
-    let result = await fetch("http://localhost:5500/login", {
+    let result = await fetch("https://sentiment-backend.vercel.app/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
