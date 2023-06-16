@@ -7,38 +7,42 @@ import Footer from "./Footer";
 import Sentiment from "sentiment";
 import { Chart } from "react-google-charts";
 
-
 const ProductDetails = (props) => {
   const sentiment = new Sentiment();
   const location = useLocation();
   const [comment, setComment] = useState("");
-  
 
   let sadX = 0;
   let hapX = 0;
   let nutX = 0;
-  let score=0;
-  let totalscore=0;
-  
+  let score = 0;
+  let totalscore = 0;
+  let ratingScore;
 
-   
-   const options = {
+  const options = {
     chart: {
       title: "Product Review",
       subtitle: "Till today",
     },
   };
 
-  const dat = {
-    productIDc: location.state.id,
-    commenterc: JSON.parse(localStorage.getItem("user")).name,
-    commentc: comment,
-  };
-
   const collectdata = async () => {
+    ratingScore = Math.trunc((hapX / (sadX + nutX)) * 100);
+
+    if (typeof ratingScore === "number") {
+      ratingScore = ratingScore;
+    } else {
+      ratingScore = 0;
+    }
+
     let result = await fetch("http://localhost:5500/postcomment", {
       method: "Post",
-      body: JSON.stringify(dat),
+      body: JSON.stringify({
+        productIDc: location.state.id,
+        commenterc: JSON.parse(localStorage.getItem("user")).name,
+        commentc: comment,
+        score: ratingScore,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -73,7 +77,7 @@ const ProductDetails = (props) => {
     setCon(re);
   };
 
- //To find out the popular product
+  //To find out the popular product
 
   return (
     <>
@@ -208,10 +212,10 @@ const ProductDetails = (props) => {
                           </p> */}
 
                           <span class="d-none">
-                            {score=sentiment.analyze(item.comment).score}
-                            {
-                              score>0?totalscore=totalscore+score:totalscore
-                            }
+                            {(score = sentiment.analyze(item.comment).score)}
+                            {score > 0
+                              ? (totalscore = totalscore + score)
+                              : totalscore}
                             {score !== 0
                               ? score < 0
                                 ? sadX++
@@ -265,33 +269,31 @@ const ProductDetails = (props) => {
                         <br />
                       </div>
                     ))}
-                    <div style={{marginTop:"20px"}}></div>
-                    
- <div class="chart">
- <Chart 
-      chartType="PieChart"
-      data={
-        [
-          ["Review", "Person"],
-          ["Happy", hapX],
-          ["sad", sadX],
-          ["Nuetral", nutX],
-        ]
-      }
-     
-      width={"60%"}
-      height={"400px"}
-      
-    />                
-<Chart 
-      chartType="Bar"
-      width="60%"
-      height="400px"
-      data={[["Year", "Happy", "Sad", "Nuetral"], ["Analysis", hapX, sadX, nutX]]}
-      options={options}
-     
-    />
-    </div> 
+                    <div style={{ marginTop: "20px" }}></div>
+
+                    <div class="chart">
+                      <Chart
+                        chartType="PieChart"
+                        data={[
+                          ["Review", "Person"],
+                          ["Happy", hapX],
+                          ["sad", sadX],
+                          ["Nuetral", nutX],
+                        ]}
+                        width={"60%"}
+                        height={"400px"}
+                      />
+                      <Chart
+                        chartType="Bar"
+                        width="60%"
+                        height="400px"
+                        data={[
+                          ["Year", "Happy", "Sad", "Nuetral"],
+                          ["Analysis", hapX, sadX, nutX],
+                        ]}
+                        options={options}
+                      />
+                    </div>
                     <div class="small d-flex justify-content-start">
                       <a href="#!" class="d-flex align-items-center me-3">
                         <i class="far fa-thumbs-up me-2"></i>
@@ -357,9 +359,9 @@ const ProductDetails = (props) => {
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );
 };
+
 export default ProductDetails;

@@ -7,8 +7,8 @@ const productSchema = new mongoose.Schema({
   company: String,
   imagelink: String,
   discription: String,
-  popular:Boolean,
+  ratingScore: String,
   comments: [{ userName: String, comment: String }],
 });
 
-module.exports = mongoose.model("products", productSchema);
+module.exports = mongoose.model("products", productSchema);

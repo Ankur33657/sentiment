@@ -3,8 +3,6 @@ const cors = require("cors");
 require("./db/config");
 const User = require("./db/user");
 const Product = require("./db/Product");
-const Comment = require("./db/comment");
-const comment = require("./db/comment");
 
 const app = express();
 app.use(express.json());
@@ -44,6 +42,8 @@ app.get("/products", async (req, res) => {
 });
 
 app.post("/postcomment", async (req, res) => {
+  // ratingScore: +req.body.score
+
   Product.findById(req.body.productIDc, (err, item) => {
     if (!err) {
       if (item) {
@@ -51,6 +51,9 @@ app.post("/postcomment", async (req, res) => {
           userName: req.body.commenterc,
           comment: req.body.commentc,
         });
+
+        item.ratingScore = req.body.score;
+
         let result = item.save();
         res.send(result);
       }
@@ -58,6 +61,8 @@ app.post("/postcomment", async (req, res) => {
       console.log(err);
     }
   });
+
+  Product.findByIdAndUpdate(req.body.productIDc, (err, item) => {});
 });
 
 app.post("/getcomm", async (req, res) => {
@@ -72,8 +77,6 @@ app.post("/getcomm", async (req, res) => {
       console.log(err);
     }
   });
-
-
-  });
+});
 
 app.listen(5500);

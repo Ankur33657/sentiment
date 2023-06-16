@@ -1,3 +1,4 @@
-const mongoose=require('mongoose');
-mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost:27017/ecom');
+require("dotenv").config();
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.MONGODB_URL);
